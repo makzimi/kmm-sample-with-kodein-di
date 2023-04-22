@@ -46,7 +46,6 @@ kotlin {
                 //Key-Value storage
                 implementation(libs.multiplatform.settings)
                 // DI
-                api(libs.koin.core)
                 implementation(libs.kodein)
             }
         }

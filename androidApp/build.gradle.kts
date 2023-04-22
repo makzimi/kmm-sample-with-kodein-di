@@ -83,8 +83,6 @@ android {
         implementation(libs.kotlinx.coroutines.core)
         implementation(libs.kotlinx.coroutines.android)
         //DI
-        implementation(libs.koin.core)
-        implementation(libs.koin.android)
         implementation(libs.kodein)
         implementation(libs.kodein.androidFramework)
         implementation(libs.kodein.compose)
