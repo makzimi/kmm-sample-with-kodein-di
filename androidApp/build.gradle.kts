@@ -85,6 +85,9 @@ android {
         //DI
         implementation(libs.koin.core)
         implementation(libs.koin.android)
+        implementation(libs.kodein)
+        implementation(libs.kodein.androidFramework)
+        implementation(libs.kodein.compose)
         //Navigation
         implementation(libs.voyager.navigator)
         //WorkManager
