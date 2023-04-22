@@ -20,14 +20,14 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.github.jetbrains.rssreader.app.FeedAction
 import com.github.jetbrains.rssreader.app.FeedStore
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+import org.kodein.di.compose.rememberDI
+import org.kodein.di.instance
 
-class MainScreen : Screen, KoinComponent {
+class MainScreen : Screen {
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
     override fun Content() {
-        val store: FeedStore by inject()
+        val store: FeedStore by rememberDI { instance() }
         val context = LocalContext.current
         val navigator = LocalNavigator.currentOrThrow
         val state by store.observeState().collectAsState()
@@ -63,10 +63,10 @@ class MainScreen : Screen, KoinComponent {
     }
 }
 
-class FeedListScreen : Screen, KoinComponent {
+class FeedListScreen : Screen {
     @Composable
     override fun Content() {
-        val store: FeedStore by inject()
+        val store: FeedStore by rememberDI { instance() }
         FeedList(store = store)
     }
 }

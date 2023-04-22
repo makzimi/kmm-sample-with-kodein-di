@@ -16,14 +16,19 @@ import com.github.jetbrains.rssreader.androidApp.composeui.MainScreen
 import com.github.jetbrains.rssreader.app.FeedSideEffect
 import com.github.jetbrains.rssreader.app.FeedStore
 import kotlinx.coroutines.flow.*
-import org.koin.android.ext.android.inject
+import org.kodein.di.DIAware
+import org.kodein.di.android.closestDI
+import org.kodein.di.instance
 
-class AppActivity : ComponentActivity() {
+class AppActivity : ComponentActivity(), DIAware {
+
+    override val di by closestDI()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AppTheme {
-                val store: FeedStore by inject()
+                val store: FeedStore by instance()
                 val scaffoldState = rememberScaffoldState()
                 val error = store.observeSideEffect()
                     .filterIsInstance<FeedSideEffect.Error>()

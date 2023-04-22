@@ -5,15 +5,17 @@ import androidx.work.*
 import com.github.jetbrains.rssreader.core.RssReader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+import org.kodein.di.DIAware
+import org.kodein.di.instance
 import java.util.concurrent.TimeUnit
 
 class RefreshWorker(
     appContext: Context,
-    workerParams: WorkerParameters
-) : CoroutineWorker(appContext, workerParams), KoinComponent {
-    private val rssReader: RssReader by inject()
+    workerParams: WorkerParameters,
+    diAware: DIAware,
+) : CoroutineWorker(appContext, workerParams), DIAware by diAware  {
+
+    private val rssReader: RssReader by instance()
 
     override suspend fun doWork(): Result = withContext(Dispatchers.Main) {
         rssReader.getAllFeeds(true)
