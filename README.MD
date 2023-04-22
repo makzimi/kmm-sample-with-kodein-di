@@ -1,8 +1,10 @@
-# KMM RSS Reader
+# KMM RSS Reader with Kodein DI
 
 This is an example of how DI can be organised in a KMM project using DI Kodein. This example shows how Kodein is used not only in the Android application, but also in a shared module in all source sets: commonMain, androidMain and iosMain.
 
 <img src="/media/di-structure.png"/>  
+
+## The original description of this project is in below sections
 
 <img src="/media/ios+android.png"/>  
 
