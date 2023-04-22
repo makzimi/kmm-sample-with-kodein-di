@@ -12,12 +12,12 @@ import RssReader
 
 @main
 class RSSApp: App {
-    let rss: RssReader
+    let dependencies: Dependencies
     let store: ObservableFeedStore
     
     required init() {
-        rss = RssReader.Companion().create(withLog: true)
-        store = ObservableFeedStore(store: FeedStore(rssReader: rss))
+        dependencies = DependenciesFactory.shared.create()
+        store = ObservableFeedStore(store: dependencies.provideFeedStore())
     }
   
     var body: some Scene {
