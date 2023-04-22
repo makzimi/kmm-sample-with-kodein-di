@@ -1,5 +1,9 @@
 # KMM RSS Reader
 
+This is an example of how DI can be organised in a KMM project using DI Kodein. This example shows how Kodein is used not only in the Android application, but also in a shared module in all source sets: commonMain, androidMain and iosMain.
+
+<img src="/media/di-structure.png"/>  
+
 <img src="/media/ios+android.png"/>  
 
 This is an open-source, mobile, cross-platform application built
